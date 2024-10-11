@@ -1,0 +1,33 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Абсолютний шлях до кореневої папки -->
+    <SolutionPath Condition=" '$(SolutionPath)' == '' ">C:\Users\yurka\OneDrive\Рабочий стол\KPP</SolutionPath>
+    <LabNumber Condition=" '$(LabNumber)' == '' ">Lab1</LabNumber>
+  </PropertyGroup>
+
+  <!-- Ціль для збірки основного проєкту -->
+  <Target Name="Build">
+    <PropertyGroup>
+      <BuildProject>$(SolutionPath)\$(LabNumber)\$(LabNumber)\$(LabNumber).csproj</BuildProject>
+    </PropertyGroup>
+    <MSBuild Projects="$(BuildProject)" Targets="Restore;Build" />
+  </Target>
+
+  <!-- Ціль для запуску основного проєкту -->
+  <Target Name="Run">
+    <PropertyGroup>
+      <RunProject>$(SolutionPath)\$(LabNumber)\$(LabNumber)\$(LabNumber).csproj</RunProject>
+    </PropertyGroup>
+    <Exec Command="dotnet run --project &quot;$(RunProject)&quot;" />
+  </Target>
+
+  <!-- Ціль для запуску тестів -->
+  <Target Name="Test">
+    <PropertyGroup>
+      <TestProject>$(SolutionPath)\Lab1\Lab1Tests\Lab1Tests.csproj</TestProject>
+    </PropertyGroup>
+    <Exec Command="dotnet test &quot;$(TestProject)&quot; --logger:console;verbosity=detailed" />
+  </Target>
+
+</Project>
