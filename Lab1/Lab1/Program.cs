@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         // Абсолютний шлях до файлу INPUT.TXT
         string inputFilePath = @"C:\Users\yurka\OneDrive\Рабочий стол\KPP\Lab1\INPUT.TXT";
@@ -34,7 +34,7 @@ class Program
         }
     }
 
-    static int CountDivisors(long x)
+    public static int CountDivisors(long x)
     {
         int count = 0;
         for (long i = 1; i * i <= x; i++)
